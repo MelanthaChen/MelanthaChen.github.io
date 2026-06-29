@@ -13,9 +13,11 @@ export const metadata: Metadata = {
     "Yuxuan Chen",
     "Software Engineer",
     "AI Engineer",
-    "Next.js",
+    "Python",
+    "FastAPI",
     "LLM",
-    "Developer Tools"
+    "NLP",
+    "LLM Evaluation"
   ],
   authors: [{ name: site.name }],
   creator: site.name,

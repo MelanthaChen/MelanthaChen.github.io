@@ -16,10 +16,11 @@ import {
 export const site = {
   name: "Yuxuan Chen",
   title: "Software Engineer",
-  description: "Building AI-powered platforms, developer tools, and intelligent systems.",
+  description: "Building LLM evaluation platforms, AI research systems, and data-driven software.",
   education: "MS in Software Engineering Systems, Northeastern University",
-  location: "Boston, MA",
-  email: "yuxuan.chen@northeastern.edu",
+  location: "Malden, MA",
+  email: "yuxuan.chen.1031@gmail.com",
+  phone: "+1 (223) 269-8058",
   github: "https://github.com/MelanthaChen",
   linkedin: "https://www.linkedin.com/in/yuxuan-chen",
   resume: "/resume-yuxuan-chen.pdf"
@@ -39,37 +40,37 @@ export const aboutCards = [
     icon: GraduationCap,
     label: "Education",
     value: "Northeastern University",
-    detail: "MS in Software Engineering Systems"
+    detail: "MS in Software Engineering Systems, expected Dec 2026"
   },
   {
     icon: BrainCircuit,
     label: "Current Role",
-    value: "Software engineer",
-    detail: "LLM platforms, evaluation, retrieval, and developer workflows"
+    value: "Research Assistant",
+    detail: "Building LLM recommendation evaluation systems at Northeastern University"
   },
   {
     icon: FlaskConical,
     label: "Research",
-    value: "AI search",
-    detail: "Generative Engine Optimization, answer quality, and automation"
+    value: "LLM behavior",
+    detail: "Repeated exposure, recommendation shifts, citation behavior, and GEO workflows"
   },
   {
     icon: MapPin,
     label: "Location",
-    value: "Boston",
-    detail: "Open to engineering roles across product and infrastructure"
+    value: "Malden, MA",
+    detail: "Graduate student and software engineer in the Boston area"
   },
   {
     icon: Sparkles,
     label: "Interests",
-    value: "Useful intelligence",
-    detail: "Search, automation, applied ML, and quietly excellent tools"
+    value: "Applied AI systems",
+    detail: "LLM evaluation, NLP pipelines, automation, and scalable data workflows"
   },
   {
     icon: Rocket,
     label: "Career Goal",
-    value: "Build durable systems",
-    detail: "Own complex systems from prototype to production quality"
+    value: "Build reliable AI infrastructure",
+    detail: "Design measurable, reproducible platforms for model evaluation and analysis"
   }
 ];
 
@@ -91,97 +92,97 @@ export type Project = {
 
 export const projects: Project[] = [
   {
-    title: "GEO Engine",
-    category: "Search",
+    title: "LLM Recommendation Exposure Platform",
+    category: "AI Platform",
     image: "/images/project-geo.svg",
     description:
-      "A Generative Engine Optimization platform for measuring and improving AI search visibility.",
-    stack: ["Next.js", "TypeScript", "LLM Eval", "PostgreSQL", "Vercel"],
+      "A research platform for evaluating how repeated exposure changes recommendation behavior across large language models.",
+    stack: ["Python", "FastAPI", "PostgreSQL", "OpenAI APIs", "Playwright"],
     links: { github: site.github, demo: "#" },
     overview:
-      "GEO Engine tracks how brands and technical content appear inside AI-generated answers, then recommends improvements with evidence.",
+      "The platform automates experiment execution, data collection, exposure simulations, ranking analysis, and evaluation workflows for LLM recommendation research.",
     problem:
-      "Traditional SEO analytics miss how LLM-powered answer engines cite, compress, or omit source material.",
+      "LLM recommendations can shift after repeated exposure, but measuring those shifts requires controlled experiments, repeatable runs, and structured ranking analysis.",
     solution:
-      "A prompt suite, retrieval audit pipeline, and scoring layer that compares generated answers across engines and topic clusters.",
+      "Backend services coordinate prompt execution, collect model outputs, analyze ranking and citation changes, and support automated GEO content workflows.",
     challenges: [
-      "Normalizing unstable model outputs into comparable measurements",
-      "Designing reports that are useful without overstating certainty",
-      "Keeping evaluation runs reproducible and cost-aware"
+      "Automating repeated exposure simulations across model runs",
+      "Tracking recommendation and citation behavior over time",
+      "Keeping experiment execution reproducible and auditable"
     ],
     learned:
-      "The strongest AI analytics products combine probabilistic signals with careful product language.",
-    timeline: "8 weeks from research prototype to product-quality dashboard",
+      "Strong AI research systems need reliable experiment orchestration as much as they need model access.",
+    timeline: "Research Assistant, Northeastern University - May 2026 to Present",
     screenshots: ["/images/project-geo.svg", "/images/project-llm.svg"]
   },
   {
-    title: "Algo Coach",
-    category: "Developer Tool",
+    title: "Unified LLM Evaluation Pipeline",
+    category: "AI Platform",
     image: "/images/project-algo.svg",
     description:
-      "An adaptive interview preparation tool that explains algorithms through hints, traces, and feedback loops.",
-    stack: ["React", "Node.js", "OpenAI", "Redis", "Tailwind"],
+      "A benchmarking pipeline for comparing 10+ LLMs across cloud GPU environments, APIs, and deployment configurations.",
+    stack: ["Python", "Cloud GPUs", "vLLM", "AWS", "GCP"],
     links: { github: site.github, demo: "#" },
     overview:
-      "Algo Coach turns coding practice into a guided session with strategic hints, runtime visualizations, and post-solution review.",
+      "The system measured latency, throughput, cost, and configuration-level performance across L4, T4, and A100 environments.",
     problem:
-      "Most practice tools reveal answers too quickly or give feedback that is too generic to change behavior.",
+      "Model teams need reproducible evaluation across different model APIs and GPU settings instead of one-off benchmark scripts.",
     solution:
-      "A session engine that models the learner's current approach and chooses the smallest helpful next hint.",
+      "A unified experiment workflow with run tagging for model, config, GPU specification, and prompt set, enabling structured comparison and auditability.",
     challenges: [
-      "Balancing helpfulness with preserving productive struggle",
-      "Rendering trace data clearly on small screens",
-      "Preventing generated feedback from becoming vague"
+      "Orchestrating concurrent multi-model inference workloads",
+      "Identifying bottlenecks across cloud deployment configurations",
+      "Reducing setup time for large-scale LLM testing"
     ],
     learned:
-      "Good developer education software needs pacing, not just correctness checks.",
-    timeline: "6 weeks for adaptive session engine, trace UI, and feedback loops",
+      "Reliable evaluation infrastructure turns model selection into an engineering process, not a guessing exercise.",
+    timeline: "Software Engineer Intern, Software Velocity Corporation - Sep 2025 to Jan 2026",
     screenshots: ["/images/project-algo.svg", "/images/project-geo.svg"]
   },
   {
-    title: "LLM Search Optimizer",
-    category: "AI Platform",
+    title: "Large-Scale NLP Text Processing Pipeline",
+    category: "Search",
     image: "/images/project-llm.svg",
     description:
-      "A retrieval and prompt optimization workspace for evaluating answer quality across knowledge bases.",
-    stack: ["Python", "FastAPI", "Next.js", "Vector DB", "LangChain"],
+      "NLP workflows for processing 300K+ documents and 100M+ data points for large-scale linguistic analysis.",
+    stack: ["Python", "NLP", "SQL", "Visualization", "Data Workflows"],
     links: { github: site.github, demo: "#" },
     overview:
-      "The optimizer helps teams compare retrieval settings, prompt variants, and model responses in one repeatable workflow.",
+      "Built reusable pipelines for structured corpus generation, text analysis, querying, and visualization at Dickinson College.",
     problem:
-      "RAG teams often tune prompts and retrieval settings through scattered notebooks, logs, and subjective review.",
+      "Large text corpora need repeatable processing and analysis workflows before they can support model-driven research insights.",
     solution:
-      "A structured experiment layer with versioned datasets, side-by-side answers, and weighted quality dimensions.",
+      "Designed Python-based NLP pipelines and reusable query components to extract patterns from high-dimensional text data.",
     challenges: [
-      "Creating evaluation labels that non-ML teammates can trust",
-      "Designing compact comparisons for dense answer sets",
-      "Separating retrieval failure from generation failure"
+      "Processing 300K+ documents into usable structured corpora",
+      "Managing 100M+ data points for downstream analysis",
+      "Creating reusable visualization components for iterative workflows"
     ],
     learned:
-      "Evaluation UX is infrastructure; when it is elegant, teams make better model decisions faster.",
-    timeline: "10 weeks for experiment model, comparison UI, and retrieval analytics",
+      "The quality of downstream NLP analysis depends on disciplined data workflow design.",
+    timeline: "Research Assistant, Dickinson College - Sep 2023 to Jul 2024",
     screenshots: ["/images/project-llm.svg", "/images/project-algo.svg"]
   }
 ];
 
 export const research = [
   {
+    date: "May 2026 - Present",
+    title: "Research Assistant, Northeastern University",
+    area: "LLM recommendation behavior",
+    text: "Designing a platform to evaluate how repeated exposure influences LLM recommendations, ranking shifts, and citation behavior."
+  },
+  {
     date: "2026",
-    title: "Research Assistant",
-    area: "LLM systems",
-    text: "Exploring evaluation methods for generated answers, citation behavior, and search-quality automation."
-  },
-  {
-    date: "2025",
     title: "Generative Engine Optimization",
-    area: "AI Search",
-    text: "Studied how content structure, topical authority, and retrieval cues influence answer-engine visibility."
+    area: "AI search automation",
+    text: "Developing automated content generation and publishing workflows using LLMs, Playwright, and web automation tools."
   },
   {
-    date: "2025",
-    title: "Automation Workflows",
-    area: "Developer productivity",
-    text: "Designed agentic workflows for repetitive research, validation, and documentation tasks."
+    date: "Sep 2023 - Jul 2024",
+    title: "Research Assistant, Dickinson College",
+    area: "Large-scale NLP",
+    text: "Built NLP pipelines for 300K+ documents and 100M+ data points, supporting corpus generation, analysis, and visualization."
   }
 ];
 
@@ -189,35 +190,58 @@ export const experience = [
   {
     company: "Northeastern University",
     logo: "NU",
-    role: "Software Engineering Systems Graduate Student",
-    dates: "2025 - Present",
+    role: "Research Assistant",
+    dates: "May 2026 - Present",
     responsibilities: [
-      "Built production-style full-stack systems with strong emphasis on reliability and architecture.",
-      "Designed AI-assisted workflows for search, evaluation, and developer tooling.",
-      "Collaborated across product, design, and engineering constraints."
+      "Designing and developing a platform to evaluate how repeated exposure influences LLM recommendation behavior.",
+      "Building backend services with Python, FastAPI, PostgreSQL, and OpenAI APIs to automate experiment execution and evaluation.",
+      "Implementing exposure simulations, ranking analysis, and automated GEO workflows with LLMs and Playwright."
     ],
-    tech: ["TypeScript", "Python", "React", "Cloud", "LLMs"]
+    tech: ["Python", "FastAPI", "PostgreSQL", "OpenAI APIs", "Playwright"]
   },
   {
-    company: "Independent Projects",
-    logo: "YC",
-    role: "Product-minded Software Engineer",
-    dates: "2024 - Present",
+    company: "Software Velocity Corporation",
+    logo: "SV",
+    role: "Software Engineer Intern",
+    dates: "Sep 2025 - Jan 2026",
     responsibilities: [
-      "Shipped polished portfolio projects with reusable UI systems and clean data models.",
-      "Translated ambiguous AI product ideas into testable prototypes.",
-      "Focused on performance, accessibility, and thoughtful interaction design."
+      "Designed and implemented a unified LLM evaluation pipeline for 10+ models across L4, T4, A100, and API-based environments.",
+      "Built benchmarking workflows for latency, throughput, and cost analysis across deployment configurations.",
+      "Developed experiment tracking and concurrent inference workflows, improving pipeline efficiency by 25-40%."
     ],
-    tech: ["Next.js", "FastAPI", "PostgreSQL", "Tailwind", "Vercel"]
+    tech: ["Python", "vLLM", "Cloud GPUs", "AWS", "GCP"]
+  },
+  {
+    company: "Dickinson College",
+    logo: "DC",
+    role: "Research Assistant",
+    dates: "Sep 2023 - Jul 2024",
+    responsibilities: [
+      "Built NLP pipelines for 300K+ documents and 100M+ data points using Python.",
+      "Designed structured corpus generation workflows for downstream NLP analysis and modeling.",
+      "Developed reusable querying and visualization components for iterative data workflows."
+    ],
+    tech: ["Python", "NLP", "Data Pipelines", "Visualization", "SQL"]
+  },
+  {
+    company: "China Construction Bank",
+    logo: "CCB",
+    role: "Data Analytics Intern",
+    dates: "May 2023 - Jul 2023",
+    responsibilities: [
+      "Automated daily transaction CSV cleaning with Python, reducing recurring analysis prep time by 75%.",
+      "Analyzed 50,000+ transactions in SQL and built customer segmentation models and summary tables.",
+      "Translated marketing questions into stakeholder-ready SQL insights and reporting."
+    ],
+    tech: ["Python", "SQL", "Data Cleaning", "Customer Segmentation", "Reporting"]
   }
 ];
 
 export const skillGroups = [
-  { label: "Languages", icon: Code2, skills: ["TypeScript", "Python", "Java", "SQL", "C++"] },
-  { label: "Frontend", icon: TerminalSquare, skills: ["Next.js", "React", "TailwindCSS", "Framer Motion", "shadcn/ui"] },
-  { label: "Backend", icon: BriefcaseBusiness, skills: ["FastAPI", "Node.js", "REST APIs", "Auth", "Workers"] },
-  { label: "Cloud", icon: Cloud, skills: ["Vercel", "AWS", "Docker", "CI/CD", "Serverless"] },
-  { label: "AI", icon: Bot, skills: ["LLMs", "RAG", "Prompting", "Evaluation", "Automation"] },
-  { label: "Database", icon: Database, skills: ["PostgreSQL", "Redis", "Vector DBs", "Prisma", "MongoDB"] },
-  { label: "Developer Tools", icon: BriefcaseBusiness, skills: ["Git", "Figma", "Linear", "GitHub Actions", "Playwright"] }
+  { label: "Languages", icon: Code2, skills: ["Python", "Java", "SQL"] },
+  { label: "AI/ML", icon: Bot, skills: ["LLM Systems", "RAG", "NLP", "Prompt Engineering", "LLM Evaluation"] },
+  { label: "Backend", icon: BriefcaseBusiness, skills: ["FastAPI", "OpenAI APIs", "Experiment Tracking", "Automation", "Benchmarking"] },
+  { label: "Cloud", icon: Cloud, skills: ["AWS", "GCP", "Cloud GPUs", "vLLM", "Linux"] },
+  { label: "Database", icon: Database, skills: ["PostgreSQL", "MySQL", "SQL Analysis", "Data Pipelines", "Corpus Generation"] },
+  { label: "Developer Tools", icon: TerminalSquare, skills: ["Playwright", "Git", "Web Automation", "Visualization", "Reusable Workflows"] }
 ];

@@ -65,7 +65,7 @@ export function PortfolioShell() {
   const [activeSection, setActiveSection] = useState("top");
   const [commandOpen, setCommandOpen] = useState(false);
   const [activeCategory, setActiveCategory] = useState<(typeof categories)[number]>("All");
-  const [expanded, setExpanded] = useState<string | null>("GEO Engine");
+  const [expanded, setExpanded] = useState<string | null>("LLM Recommendation Exposure Platform");
   const [modalProject, setModalProject] = useState<Project | null>(null);
   const [copied, setCopied] = useState(false);
   const { scrollYProgress } = useScroll();
@@ -140,7 +140,7 @@ export function PortfolioShell() {
         )}
       >
         <nav className="container-premium flex h-16 items-center justify-between" aria-label="Main navigation">
-          <Link href="#top" className="group inline-flex items-center gap-2 text-sm font-semibold tracking-normal">
+          <Link href="#top" className="group inline-flex items-center gap-2 text-sm font-semibold tracking-normal text-foreground">
             <span className="size-2 rounded-full bg-accent transition group-hover:scale-125" />
             Yuxuan Chen
           </Link>
@@ -221,11 +221,11 @@ function Hero() {
             Yuxuan Chen
           </h1>
           <p className="mt-7 max-w-2xl text-balance text-xl leading-8 text-foreground/88 sm:text-3xl sm:leading-10">
-            Building AI-powered platforms, developer tools, and intelligent systems.
+            Building LLM evaluation platforms, AI research systems, and data-driven software.
           </p>
           <div className="mt-7 grid gap-2 text-base leading-7 text-muted-foreground">
-            <span>MS in Software Engineering Systems</span>
-            <span>Northeastern University</span>
+            <span>MS in Software Engineering Systems, expected Dec 2026</span>
+            <span>Northeastern University, Boston, MA</span>
           </div>
           <div className="mt-10 grid w-full max-w-[320px] grid-cols-1 items-center gap-3 sm:flex sm:max-w-none sm:flex-wrap">
             <Button asChild className="w-full sm:w-auto">
@@ -665,7 +665,7 @@ function Skills() {
 
 function Resume() {
   return (
-    <Section id="resume" eyebrow="Resume" title="A clean snapshot of software, AI systems, and product execution." className="bg-[#fafafa] dark:bg-zinc-950">
+    <Section id="resume" eyebrow="Resume" title="A clean snapshot of LLM systems, research engineering, and data work." className="bg-[#fafafa] dark:bg-zinc-950">
       <Card className="grid overflow-hidden bg-white/86 shadow-[0_30px_110px_-70px_rgba(15,23,42,0.75)] dark:bg-zinc-950/72 lg:grid-cols-[0.88fr_1.12fr]">
         <div className="relative min-h-[420px] bg-muted sm:min-h-[560px]">
           <Image src="/images/resume-preview.svg" alt="Resume preview" fill className="object-cover" loading="lazy" />
@@ -674,7 +674,7 @@ function Resume() {
           <Badge className="w-fit">PDF Resume</Badge>
           <h3 className="mt-6 text-4xl font-semibold tracking-normal sm:text-5xl">Yuxuan Chen Resume</h3>
           <p className="mt-5 max-w-xl text-lg leading-8 text-muted-foreground">
-            A concise overview of engineering projects, research interests, technical depth, and product-minded execution.
+            Research assistant and software engineer focused on LLM evaluation, NLP pipelines, backend systems, and cloud-based AI experimentation.
           </p>
           <div className="mt-9">
             <Button asChild>
@@ -697,7 +697,7 @@ function Contact({ copied, copyEmail }: { copied: boolean; copyEmail: () => void
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(37,99,235,0.12),transparent_34%)]" />
         <div className="relative">
           <p className="mx-auto max-w-2xl text-xl leading-8 text-muted-foreground">
-            Open to research collaborations, AI product work, internships, and engineering teams that care about craft.
+            Open to research collaborations, AI infrastructure work, software engineering internships, and teams building measurable LLM systems.
           </p>
           <div className="mt-9 flex flex-wrap justify-center gap-3">
             <Button asChild>
@@ -734,7 +734,7 @@ function Footer() {
     <footer className="border-t border-border py-10">
       <div className="container-premium text-center text-sm text-muted-foreground sm:flex sm:items-center sm:justify-between sm:text-left">
         <p>Designed &amp; Built by Yuxuan Chen.</p>
-        <p className="mt-3 sm:mt-0">Software Engineer · AI Systems · Developer Tools</p>
+        <p className="mt-3 sm:mt-0">Software Engineer · LLM Evaluation · NLP Systems</p>
       </div>
     </footer>
   );
