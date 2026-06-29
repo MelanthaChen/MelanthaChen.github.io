@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="920" viewBox="0 0 720 920">
+  <rect width="720" height="920" fill="#f4f4f5"/>
+  <rect x="84" y="56" width="552" height="808" rx="20" fill="#fff" stroke="#e4e4e7"/>
+  <text x="126" y="145" fill="#09090b" font-family="Inter, Arial, sans-serif" font-size="46" font-weight="700">Yuxuan Chen</text>
+  <text x="128" y="190" fill="#3b82f6" font-family="Inter, Arial, sans-serif" font-size="22" font-weight="600">Software Engineer</text>
+  <rect x="126" y="246" width="468" height="2" fill="#e4e4e7"/>
+  <rect x="126" y="292" width="120" height="18" rx="9" fill="#09090b"/>
+  <rect x="126" y="336" width="410" height="12" rx="6" fill="#a1a1aa"/>
+  <rect x="126" y="366" width="338" height="12" rx="6" fill="#a1a1aa"/>
+  <rect x="126" y="430" width="154" height="18" rx="9" fill="#09090b"/>
+  <rect x="126" y="474" width="390" height="12" rx="6" fill="#a1a1aa"/>
+  <rect x="126" y="504" width="430" height="12" rx="6" fill="#a1a1aa"/>
+  <rect x="126" y="534" width="350" height="12" rx="6" fill="#a1a1aa"/>
+  <rect x="126" y="608" width="108" height="18" rx="9" fill="#09090b"/>
+  <rect x="126" y="652" width="82" height="28" rx="14" fill="#eff6ff"/>
+  <rect x="224" y="652" width="94" height="28" rx="14" fill="#eff6ff"/>
+  <rect x="334" y="652" width="104" height="28" rx="14" fill="#eff6ff"/>
+  <rect x="454" y="652" width="76" height="28" rx="14" fill="#eff6ff"/>
+</svg>

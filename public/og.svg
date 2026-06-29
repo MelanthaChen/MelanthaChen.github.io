@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#09090b"/>
+  <path d="M0 530h1200v100H0z" fill="#111827"/>
+  <circle cx="965" cy="145" r="110" fill="#1d4ed8" opacity=".18"/>
+  <rect x="80" y="82" width="1040" height="466" rx="28" fill="#0f0f12" stroke="#27272a"/>
+  <text x="130" y="225" fill="#f8fafc" font-family="Inter, Arial, sans-serif" font-size="82" font-weight="700">Yuxuan Chen</text>
+  <text x="132" y="302" fill="#93c5fd" font-family="Inter, Arial, sans-serif" font-size="34" font-weight="600">Software Engineer</text>
+  <text x="132" y="370" fill="#a1a1aa" font-family="Inter, Arial, sans-serif" font-size="34">Building AI-powered platforms and</text>
+  <text x="132" y="418" fill="#a1a1aa" font-family="Inter, Arial, sans-serif" font-size="34">intelligent developer tools.</text>
+  <rect x="792" y="164" width="216" height="216" rx="44" fill="#18181b" stroke="#3f3f46"/>
+  <path d="M830 338V205h36l34 73 34-73h36v133h-31v-76l-27 61h-24l-27-61v76h-31Z" fill="#f8fafc"/>
+  <circle cx="996" cy="187" r="14" fill="#3b82f6"/>
+</svg>
