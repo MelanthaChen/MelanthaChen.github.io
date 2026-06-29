@@ -5,6 +5,7 @@ import {
   Cloud,
   Code2,
   Database,
+  FlaskConical,
   GraduationCap,
   MapPin,
   Rocket,
@@ -15,10 +16,10 @@ import {
 export const site = {
   name: "Yuxuan Chen",
   title: "Software Engineer",
-  description: "Building AI-powered platforms and intelligent developer tools.",
+  description: "Building AI-powered platforms, developer tools, and intelligent systems.",
   education: "MS in Software Engineering Systems, Northeastern University",
   location: "Boston, MA",
-  email: "yuxuan.chen@example.com",
+  email: "yuxuan.chen@northeastern.edu",
   github: "https://github.com/MelanthaChen",
   linkedin: "https://www.linkedin.com/in/yuxuan-chen",
   resume: "/resume-yuxuan-chen.pdf"
@@ -42,9 +43,15 @@ export const aboutCards = [
   },
   {
     icon: BrainCircuit,
-    label: "Current Focus",
-    value: "AI systems",
+    label: "Current Role",
+    value: "Software engineer",
     detail: "LLM platforms, evaluation, retrieval, and developer workflows"
+  },
+  {
+    icon: FlaskConical,
+    label: "Research",
+    value: "AI search",
+    detail: "Generative Engine Optimization, answer quality, and automation"
   },
   {
     icon: MapPin,
@@ -60,8 +67,8 @@ export const aboutCards = [
   },
   {
     icon: Rocket,
-    label: "Career Goals",
-    value: "Build durable products",
+    label: "Career Goal",
+    value: "Build durable systems",
     detail: "Own complex systems from prototype to production quality"
   }
 ];
@@ -78,6 +85,7 @@ export type Project = {
   solution: string;
   challenges: string[];
   learned: string;
+  timeline: string;
   screenshots: string[];
 };
 
@@ -103,6 +111,7 @@ export const projects: Project[] = [
     ],
     learned:
       "The strongest AI analytics products combine probabilistic signals with careful product language.",
+    timeline: "8 weeks from research prototype to product-quality dashboard",
     screenshots: ["/images/project-geo.svg", "/images/project-llm.svg"]
   },
   {
@@ -126,6 +135,7 @@ export const projects: Project[] = [
     ],
     learned:
       "Good developer education software needs pacing, not just correctness checks.",
+    timeline: "6 weeks for adaptive session engine, trace UI, and feedback loops",
     screenshots: ["/images/project-algo.svg", "/images/project-geo.svg"]
   },
   {
@@ -149,6 +159,7 @@ export const projects: Project[] = [
     ],
     learned:
       "Evaluation UX is infrastructure; when it is elegant, teams make better model decisions faster.",
+    timeline: "10 weeks for experiment model, comparison UI, and retrieval analytics",
     screenshots: ["/images/project-llm.svg", "/images/project-algo.svg"]
   }
 ];
@@ -203,9 +214,10 @@ export const experience = [
 
 export const skillGroups = [
   { label: "Languages", icon: Code2, skills: ["TypeScript", "Python", "Java", "SQL", "C++"] },
-  { label: "Frameworks", icon: TerminalSquare, skills: ["Next.js", "React", "FastAPI", "Node.js", "TailwindCSS"] },
+  { label: "Frontend", icon: TerminalSquare, skills: ["Next.js", "React", "TailwindCSS", "Framer Motion", "shadcn/ui"] },
+  { label: "Backend", icon: BriefcaseBusiness, skills: ["FastAPI", "Node.js", "REST APIs", "Auth", "Workers"] },
   { label: "Cloud", icon: Cloud, skills: ["Vercel", "AWS", "Docker", "CI/CD", "Serverless"] },
   { label: "AI", icon: Bot, skills: ["LLMs", "RAG", "Prompting", "Evaluation", "Automation"] },
-  { label: "Databases", icon: Database, skills: ["PostgreSQL", "Redis", "Vector DBs", "Prisma", "MongoDB"] },
-  { label: "Tools", icon: BriefcaseBusiness, skills: ["Git", "Figma", "Linear", "GitHub Actions", "Playwright"] }
+  { label: "Database", icon: Database, skills: ["PostgreSQL", "Redis", "Vector DBs", "Prisma", "MongoDB"] },
+  { label: "Developer Tools", icon: BriefcaseBusiness, skills: ["Git", "Figma", "Linear", "GitHub Actions", "Playwright"] }
 ];
