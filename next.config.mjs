@@ -5,9 +5,12 @@ const root = dirname(fileURLToPath(import.meta.url));
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  output: "export",
   outputFileTracingRoot: root,
+  trailingSlash: true,
   images: {
-    formats: ["image/avif", "image/webp"]
+    formats: ["image/avif", "image/webp"],
+    unoptimized: true
   }
 };
 
