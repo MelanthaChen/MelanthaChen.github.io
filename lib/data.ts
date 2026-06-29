@@ -22,7 +22,7 @@ export const site = {
   email: "yuxuan.chen.1031@gmail.com",
   phone: "+1 (223) 269-8058",
   github: "https://github.com/MelanthaChen",
-  linkedin: "https://www.linkedin.com/in/yuxuan-chen",
+  linkedin: "https://www.linkedin.com/in/yuxuan-chen-739160245/",
   resume: "/resume-yuxuan-chen.pdf"
 };
 
