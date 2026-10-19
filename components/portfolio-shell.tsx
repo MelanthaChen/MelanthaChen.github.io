@@ -7,7 +7,6 @@ import { ArrowDownRight, ArrowUpRight, Download, Github, Mail, Menu, Moon, Sun, 
 import { useEffect, useState } from "react";
 import { experience, projects, site, skillGroups } from "@/lib/data";
 import { cn } from "@/lib/utils";
-import { WebglSculpture } from "@/components/hero/webgl-sculpture";
 
 const nav = [["Work", "projects"], ["About", "about"], ["Experience", "experience"]] as const;
 const geo = projects.find((project) => project.slug === "geo-engine")!;
@@ -69,12 +68,23 @@ function Hero({ reduceMotion }: { reduceMotion: boolean | null }) {
       <motion.div className="hero__actions" initial={{ opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3, duration: 0.7 }}><Link href="#projects" className="button button--primary">Selected work <ArrowDownRight size={16} /></Link><Link href={site.resume} className="button button--quiet">Resume <Download size={15} /></Link></motion.div>
       <motion.div className="hero__meta" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.6 }}><span>M.S. Software Engineering Systems</span><span>Northeastern University · 2026</span></motion.div>
     </div>
-    <motion.div className="hero__visual-wrap" style={{ y: reduceMotion ? 0 : visualY }}><HeroVisual reduceMotion={reduceMotion} /></motion.div>
+    <motion.div className="hero__visual-wrap" style={{ y: reduceMotion ? 0 : visualY }}><HeroVisual /></motion.div>
     <div className="hero__scroll"><span>Scroll to explore</span><ArrowDownRight size={15} /></div>
   </section>;
 }
 
-function HeroVisual({ reduceMotion }: { reduceMotion: boolean | null }) { return <WebglSculpture reducedMotion={reduceMotion} />; }
+function HeroVisual() {
+  return <div className="hero-mark" aria-hidden="true">
+    <div className="hero-mark__halo" />
+    <div className="hero-mark__ring hero-mark__ring--outer" />
+    <div className="hero-mark__ring hero-mark__ring--inner" />
+    <div className="hero-mark__orb" />
+    <div className="hero-mark__axis hero-mark__axis--horizontal" />
+    <div className="hero-mark__axis hero-mark__axis--vertical" />
+    <span className="hero-mark__label hero-mark__label--top">01 / SYSTEMS STUDY</span>
+    <span className="hero-mark__label hero-mark__label--bottom">BUILD / TEST / ITERATE</span>
+  </div>;
+}
 
 function Work({ reduceMotion }: { reduceMotion: boolean | null }) {
   return <section id="projects" className="section work-section" aria-labelledby="work-title"><div className="page-width"><div className="work-heading"><div><p className="eyebrow">01 / Selected work</p><h2 id="work-title">Four systems.<br /><em>Different</em> kinds of clarity.</h2></div><p className="work-heading__note">A closer look at the tools, workflows, and research surfaces I build when the problem is too interesting for a template.</p></div><FlagshipProject project={geo} reduceMotion={reduceMotion} /><div className="project-atlas">{otherProjects.map((project, index) => <AtlasProject key={project.slug} project={project} index={index} />)}</div></div></section>;
