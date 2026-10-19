@@ -13,7 +13,7 @@ function makeSculpture(rows = 96, columns = 18) {
     const u = (row / rows) * Math.PI * 2;
     const v = (column / columns) * Math.PI * 2;
     const major = 1.02 + 0.16 * Math.cos(3 * u);
-    const center: Vec3 = [major * Math.cos(2 * u), 0.72 * Math.sin(3 * u), major * Math.sin(2 * u)];
+    const center: Vec3 = [major * Math.cos(2 * u), major * Math.sin(2 * u), 0.55 * Math.sin(3 * u)];
     const tangent: Vec3 = [-2 * major * Math.sin(2 * u), 2.16 * Math.cos(3 * u), 2 * major * Math.cos(2 * u)];
     const tangentLength = Math.hypot(...tangent);
     const t: Vec3 = [tangent[0] / tangentLength, tangent[1] / tangentLength, tangent[2] / tangentLength];
