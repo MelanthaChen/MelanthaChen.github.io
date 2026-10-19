@@ -15,8 +15,8 @@ import {
 
 export const site = {
   name: "Yuxuan Chen",
-  title: "Software Engineer",
-  description: "Building LLM evaluation platforms, AI research systems, and data-driven software.",
+  title: "Full-Stack & Applied AI Engineer",
+  description: "Yuxuan Chen builds dependable full-stack systems, applied AI infrastructure, and interfaces with intent.",
   education: "MS in Software Engineering Systems, Northeastern University",
   location: "Malden, MA",
   email: "yuxuan.chen.1031@gmail.com",
@@ -75,6 +75,7 @@ export const aboutCards = [
 ];
 
 export type Project = {
+  slug: string;
   title: string;
   category: "AI Platform" | "Developer Tool" | "Search";
   image: string;
@@ -92,13 +93,14 @@ export type Project = {
 
 export const projects: Project[] = [
   {
+    slug: "llm-recommendation-exposure-platform",
     title: "LLM Recommendation Exposure Platform",
     category: "AI Platform",
     image: "/images/project-geo.svg",
     description:
       "A research platform for evaluating how repeated exposure changes recommendation behavior across large language models.",
     stack: ["Python", "FastAPI", "PostgreSQL", "OpenAI APIs", "Playwright"],
-    links: { github: site.github, demo: "#" },
+    links: { github: "https://github.com/MelanthaChen/geo-engine", demo: "https://geo-engine-phi.vercel.app" },
     overview:
       "The platform automates experiment execution, data collection, exposure simulations, ranking analysis, and evaluation workflows for LLM recommendation research.",
     problem:
@@ -116,13 +118,14 @@ export const projects: Project[] = [
     screenshots: ["/images/project-geo.svg", "/images/project-llm.svg"]
   },
   {
+    slug: "unified-llm-evaluation-pipeline",
     title: "Unified LLM Evaluation Pipeline",
     category: "AI Platform",
     image: "/images/project-algo.svg",
     description:
       "A benchmarking pipeline for comparing 10+ LLMs across cloud GPU environments, APIs, and deployment configurations.",
     stack: ["Python", "Cloud GPUs", "vLLM", "AWS", "GCP"],
-    links: { github: site.github, demo: "#" },
+    links: { github: "https://github.com/MelanthaChen/geo-research-outreach-agent", demo: "" },
     overview:
       "The system measured latency, throughput, cost, and configuration-level performance across L4, T4, and A100 environments.",
     problem:
@@ -140,13 +143,14 @@ export const projects: Project[] = [
     screenshots: ["/images/project-algo.svg", "/images/project-geo.svg"]
   },
   {
+    slug: "large-scale-nlp-text-processing",
     title: "Large-Scale NLP Text Processing Pipeline",
     category: "Search",
     image: "/images/project-llm.svg",
     description:
       "NLP workflows for processing 300K+ documents and 100M+ data points for large-scale linguistic analysis.",
     stack: ["Python", "NLP", "SQL", "Visualization", "Data Workflows"],
-    links: { github: site.github, demo: "#" },
+    links: { github: "https://github.com/MelanthaChen/algo-coach", demo: "" },
     overview:
       "Built reusable pipelines for structured corpus generation, text analysis, querying, and visualization at Dickinson College.",
     problem:
