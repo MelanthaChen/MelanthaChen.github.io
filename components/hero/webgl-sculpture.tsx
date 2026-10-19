@@ -84,5 +84,5 @@ export function WebglSculpture({ reducedMotion, className }: { reducedMotion: bo
     } catch (error) { console.warn("WebGL sculpture unavailable; using fallback.", error); fallback?.setAttribute("data-active", "true"); }
   }, [reducedMotion, contextRevision]);
 
-  return <div className={cn("webgl-sculpture", className)}><canvas ref={canvasRef} aria-label="Interactive iridescent 3D sculpture" /><div ref={fallbackRef} className="webgl-fallback" aria-hidden="true"><div /></div><div className="webgl-sculpture__caption"><span>interactive study</span><span>drag / rotate</span></div></div>;
+  return <div className={cn("webgl-sculpture", className)}><canvas ref={canvasRef} aria-label="Interactive iridescent 3D sculpture" /><div ref={fallbackRef} className="webgl-fallback" aria-hidden="true"><div className="webgl-fallback__ribbon webgl-fallback__ribbon--a" /><div className="webgl-fallback__ribbon webgl-fallback__ribbon--b" /><div className="webgl-fallback__core" /></div><div className="webgl-sculpture__caption"><span>interactive study</span><span>drag / rotate</span></div></div>;
 }
