@@ -5,20 +5,27 @@ import { cn } from "@/lib/utils";
 
 type Vec3 = [number, number, number];
 
-function makeSculpture(rows = 26, columns = 48) {
+function makeSculpture(rows = 96, columns = 18) {
   const positions: number[] = [];
   const normals: number[] = [];
   const indices: number[] = [];
-  const point = (row: number, column: number): Vec3 => {
-    const theta = (row / rows) * Math.PI;
-    const phi = (column / columns) * Math.PI * 2;
-    const ripple = 1 + 0.12 * Math.sin(phi * 3 + theta * 2) + 0.07 * Math.cos(theta * 5 - phi * 2);
-    const lean = 0.12 * Math.sin(theta) * Math.sin(phi * 2);
-    return [Math.sin(theta) * Math.cos(phi) * ripple + lean, Math.cos(theta) * ripple, Math.sin(theta) * Math.sin(phi) * ripple];
+  const point = (row: number, column: number): { position: Vec3; normal: Vec3 } => {
+    const u = (row / rows) * Math.PI * 2;
+    const v = (column / columns) * Math.PI * 2;
+    const major = 1.02 + 0.16 * Math.cos(3 * u);
+    const center: Vec3 = [major * Math.cos(2 * u), 0.72 * Math.sin(3 * u), major * Math.sin(2 * u)];
+    const tangent: Vec3 = [-2 * major * Math.sin(2 * u), 2.16 * Math.cos(3 * u), 2 * major * Math.cos(2 * u)];
+    const tangentLength = Math.hypot(...tangent);
+    const t: Vec3 = [tangent[0] / tangentLength, tangent[1] / tangentLength, tangent[2] / tangentLength];
+    const radial: Vec3 = [Math.cos(2 * u), 0, Math.sin(2 * u)];
+    const binormal: Vec3 = [t[1] * radial[2] - t[2] * radial[1], t[2] * radial[0] - t[0] * radial[2], t[0] * radial[1] - t[1] * radial[0]];
+    const twist = v + u * 1.55;
+    const radius = 0.22 + 0.07 * Math.sin(5 * u + v) + 0.035 * Math.cos(2 * u - 3 * v);
+    const ring: Vec3 = [Math.cos(twist) * radial[0] + Math.sin(twist) * binormal[0], Math.cos(twist) * radial[1] + Math.sin(twist) * binormal[1], Math.cos(twist) * radial[2] + Math.sin(twist) * binormal[2]];
+    return { position: [center[0] + radius * ring[0], center[1] + radius * ring[1], center[2] + radius * ring[2]], normal: ring };
   };
   for (let row = 0; row <= rows; row += 1) for (let column = 0; column <= columns; column += 1) {
-    const p = point(row, column); const length = Math.hypot(...p);
-    positions.push(...p); normals.push(p[0] / length, p[1] / length, p[2] / length);
+    const p = point(row, column); positions.push(...p.position); normals.push(...p.normal);
   }
   for (let row = 0; row < rows; row += 1) for (let column = 0; column < columns; column += 1) {
     const next = row * (columns + 1) + column; const below = (row + 1) * (columns + 1) + column;
@@ -47,8 +54,8 @@ export function WebglSculpture({ reducedMotion, className }: { reducedMotion: bo
     const gl = canvas.getContext("webgl", { antialias: true, alpha: true, powerPreference: "high-performance" });
     if (!gl) { fallback?.setAttribute("data-active", "true"); return; }
     try {
-      const vertex = compileShader(gl, gl.VERTEX_SHADER, `attribute vec3 aPosition; attribute vec3 aNormal; uniform float uTime; uniform vec2 uRotation; uniform float uAspect; varying vec3 vNormal; varying vec3 vPosition; mat3 rotX(float a){float c=cos(a),s=sin(a);return mat3(1.,0.,0.,0.,c,-s,0.,s,c);} mat3 rotY(float a){float c=cos(a),s=sin(a);return mat3(c,0.,s,0.,1.,0.,-s,0.,c);} void main(){mat3 rotation=rotX(uRotation.y)*rotY(uRotation.x);vec3 p=rotation*aPosition;vec3 n=normalize(rotation*aNormal);p*=1.+sin(uTime*.7+p.y*3.)*.025;vPosition=p;vNormal=n;float camera=3.35;vec2 projected=p.xy/(camera-p.z);gl_Position=vec4(projected.x*1.48/uAspect,projected.y*1.48,p.z/camera,1.);}`);
-      const fragment = compileShader(gl, gl.FRAGMENT_SHADER, `precision mediump float; uniform float uTime; varying vec3 vNormal; varying vec3 vPosition; void main(){vec3 light=normalize(vec3(-.45,.7,1.));float diffuse=max(dot(vNormal,light),0.);float rim=pow(1.-max(dot(vNormal,vec3(0.,0.,1.)),0.),2.);float bands=sin(vPosition.y*4.+uTime*.45)*.5+.5;vec3 color=mix(vec3(.65,.48,1.),vec3(.22,.68,.95),bands);color=mix(color,vec3(1.,.62,.72),rim*.42);color*=.36+diffuse*.82;gl_FragColor=vec4(color,.96);}`);
+      const vertex = compileShader(gl, gl.VERTEX_SHADER, `attribute vec3 aPosition; attribute vec3 aNormal; uniform float uTime; uniform vec2 uRotation; uniform float uAspect; varying vec3 vNormal; varying vec3 vPosition; mat3 rotX(float a){float c=cos(a),s=sin(a);return mat3(1.,0.,0.,0.,c,-s,0.,s,c);} mat3 rotY(float a){float c=cos(a),s=sin(a);return mat3(c,0.,s,0.,1.,0.,-s,0.,c);} void main(){mat3 rotation=rotX(uRotation.y)*rotY(uRotation.x);vec3 p=rotation*aPosition;vec3 n=normalize(rotation*aNormal);p+=n*sin(uTime*.55+p.y*4.)*.018;vPosition=p;vNormal=n;float camera=3.6;vec2 projected=p.xy/(camera-p.z);gl_Position=vec4(projected.x*1.3/uAspect,projected.y*1.3,p.z/camera,1.);}`);
+      const fragment = compileShader(gl, gl.FRAGMENT_SHADER, `precision mediump float; uniform float uTime; varying vec3 vNormal; varying vec3 vPosition; void main(){vec3 view=normalize(vec3(0.,0.,2.8)-vPosition);vec3 light=normalize(vec3(-.55,.8,1.));float diffuse=max(dot(vNormal,light),0.);float fresnel=pow(1.-max(dot(vNormal,view),0.),2.6);float specular=pow(max(dot(reflect(-light,vNormal),view),0.),24.);float iridescence=sin(vPosition.y*3.8+vPosition.x*2.2+uTime*.3)*.5+.5;vec3 chrome=mix(vec3(.16,.2,.3),vec3(.72,.55,.92),iridescence);chrome=mix(chrome,vec3(.34,.76,.9),fresnel*.7);vec3 color=chrome*(.28+diffuse*.82)+vec3(1.,.86,.98)*specular*.8+vec3(.48,.3,1.)*fresnel*.34;gl_FragColor=vec4(color,.98);}`);
       const program = gl.createProgram();
       if (!program) throw new Error("Unable to create WebGL program");
       gl.attachShader(program, vertex); gl.attachShader(program, fragment); gl.linkProgram(program);
