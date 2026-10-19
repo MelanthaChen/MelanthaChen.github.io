@@ -12,15 +12,15 @@ function makeSculpture(rows = 96, columns = 18) {
   const point = (row: number, column: number): { position: Vec3; normal: Vec3 } => {
     const u = (row / rows) * Math.PI * 2;
     const v = (column / columns) * Math.PI * 2;
-    const major = 1.02 + 0.16 * Math.cos(3 * u);
-    const center: Vec3 = [major * Math.cos(2 * u), major * Math.sin(2 * u), 0.55 * Math.sin(3 * u)];
-    const tangent: Vec3 = [-2 * major * Math.sin(2 * u), 2.16 * Math.cos(3 * u), 2 * major * Math.cos(2 * u)];
+    const major = 0.78 + 0.1 * Math.cos(3 * u);
+    const center: Vec3 = [major * Math.cos(2 * u), major * Math.sin(2 * u), 0.35 * Math.sin(3 * u)];
+    const tangent: Vec3 = [-2 * major * Math.sin(2 * u), 1.05 * Math.cos(3 * u), 2 * major * Math.cos(2 * u)];
     const tangentLength = Math.hypot(...tangent);
     const t: Vec3 = [tangent[0] / tangentLength, tangent[1] / tangentLength, tangent[2] / tangentLength];
     const radial: Vec3 = [Math.cos(2 * u), 0, Math.sin(2 * u)];
     const binormal: Vec3 = [t[1] * radial[2] - t[2] * radial[1], t[2] * radial[0] - t[0] * radial[2], t[0] * radial[1] - t[1] * radial[0]];
     const twist = v + u * 1.55;
-    const radius = 0.22 + 0.07 * Math.sin(5 * u + v) + 0.035 * Math.cos(2 * u - 3 * v);
+    const radius = 0.16 + 0.05 * Math.sin(5 * u + v) + 0.025 * Math.cos(2 * u - 3 * v);
     const ring: Vec3 = [Math.cos(twist) * radial[0] + Math.sin(twist) * binormal[0], Math.cos(twist) * radial[1] + Math.sin(twist) * binormal[1], Math.cos(twist) * radial[2] + Math.sin(twist) * binormal[2]];
     return { position: [center[0] + radius * ring[0], center[1] + radius * ring[1], center[2] + radius * ring[2]], normal: ring };
   };
