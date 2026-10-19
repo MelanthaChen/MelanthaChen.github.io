@@ -98,3 +98,4 @@ function Experience() {
 
 function Contact() {
   return <section id="contact" className="contact-section page-width" aria-labelledby="contact-title"><div className="contact-card"><p className="eyebrow">04 / Contact</p><h2 id="contact-title">Have a good problem?<br /><em>Let&apos;s talk.</em></h2><p>Open to software engineering, applied AI, and research-oriented teams building with care.</p><div className="contact-links"><a className="button button--primary" href={`mailto:${site.email}`}>Start a conversation <Mail size={15} /></a><a className="social-link" href={site.github} target="_blank" rel="noreferrer">GitHub <ArrowUpRight size={14} /></a><a className="social-link" href={site.linkedin} target="_blank" rel="noreferrer">LinkedIn <ArrowUpRight size={14} /></a></div></div></section>;
+}
