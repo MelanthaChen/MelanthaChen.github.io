@@ -1,0 +1,40 @@
+name: Validate portfolio
+
+on:
+  push:
+    branches:
+      - codex/creative-portfolio-redesign
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - name: Install dependencies
+        run: npm ci
+      - name: Lint
+        run: npm run lint
+      - name: Production build
+        run: npm run build
+      - name: Verify static export
+        run: |
+          test -f out/index.html
+          test -f out/404.html
+          test -f out/projects/geo-engine/index.html
+          test -f out/projects/geo-research-outreach-agent/index.html
+          test -f out/projects/tailorstack/index.html
+          test -f out/projects/algocoach/index.html
