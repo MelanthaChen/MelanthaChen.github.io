@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { AnimatePresence, motion, useReducedMotion, useScroll, useSpring, useTransform } from "framer-motion";
 import { ArrowDownRight, ArrowUpRight, Download, Github, Mail, Menu, Moon, Sun, X } from "lucide-react";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { experience, projects, site, skillGroups } from "@/lib/data";
 import { cn } from "@/lib/utils";
 
@@ -68,17 +68,41 @@ function Hero({ reduceMotion }: { reduceMotion: boolean | null }) {
       <motion.div className="hero__actions" initial={{ opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3, duration: 0.7 }}><Link href="#projects" className="button button--primary">Selected work <ArrowDownRight size={16} /></Link><Link href={site.resume} className="button button--quiet">Resume <Download size={15} /></Link></motion.div>
       <motion.div className="hero__meta" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.6 }}><span>M.S. Software Engineering Systems</span><span>Northeastern University · 2026</span></motion.div>
     </div>
-    <motion.div className="hero__visual-wrap" style={{ y: reduceMotion ? 0 : visualY }}><HeroVisual /></motion.div>
+    <motion.div className="hero__visual-wrap" style={{ y: reduceMotion ? 0 : visualY }}><HeroVisual reducedMotion={reduceMotion} /></motion.div>
     <div className="hero__scroll"><span>Scroll to explore</span><ArrowDownRight size={15} /></div>
   </section>;
 }
 
-function HeroVisual() {
-  return <div className="hero-mark" aria-hidden="true">
+function HeroVisual({ reducedMotion }: { reducedMotion: boolean | null }) {
+  const visualRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const visual = visualRef.current;
+    if (!visual || reducedMotion) return;
+    const reset = () => {
+      visual.style.setProperty("--parallax-x", "0px");
+      visual.style.setProperty("--parallax-y", "0px");
+    };
+    const move = (event: PointerEvent) => {
+      const bounds = visual.getBoundingClientRect();
+      const x = ((event.clientX - bounds.left) / bounds.width - 0.5) * 10;
+      const y = ((event.clientY - bounds.top) / bounds.height - 0.5) * 10;
+      visual.style.setProperty("--parallax-x", `${x.toFixed(2)}px`);
+      visual.style.setProperty("--parallax-y", `${y.toFixed(2)}px`);
+    };
+    visual.addEventListener("pointermove", move, { passive: true });
+    visual.addEventListener("pointerleave", reset);
+    return () => {
+      visual.removeEventListener("pointermove", move);
+      visual.removeEventListener("pointerleave", reset);
+    };
+  }, [reducedMotion]);
+
+  return <div ref={visualRef} className="hero-mark" aria-hidden="true">
     <div className="hero-mark__halo" />
     <div className="hero-mark__ring hero-mark__ring--outer" />
     <div className="hero-mark__ring hero-mark__ring--inner" />
-    <div className="hero-mark__orb" />
+    <div className="hero-mark__orb"><div className="hero-mark__orb-shape" /></div>
     <div className="hero-mark__axis hero-mark__axis--horizontal" />
     <div className="hero-mark__axis hero-mark__axis--vertical" />
     <span className="hero-mark__label hero-mark__label--top">01 / SYSTEMS STUDY</span>
