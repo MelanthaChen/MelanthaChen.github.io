@@ -7,10 +7,11 @@ import { projects, site } from "@/lib/data";
 
 export const dynamicParams = false;
 export function generateStaticParams() { return projects.map((project) => ({ slug: project.slug })); }
-export function generateMetadata({ params }: { params: { slug: string } }): Metadata { const project = projects.find((item) => item.slug === params.slug); return project ? { title: project.title, description: project.description } : {}; }
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> { const { slug } = await params; const project = projects.find((item) => item.slug === slug); return project ? { title: project.title, description: project.description } : {}; }
 
-export default function ProjectCaseStudy({ params }: { params: { slug: string } }) {
-  const project = projects.find((item) => item.slug === params.slug);
+export default async function ProjectCaseStudy({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  const project = projects.find((item) => item.slug === slug);
   if (!project) notFound();
   return <main className="case-study">
     <header className="case-nav page-width"><Link href="/" className="case-back"><ArrowLeft size={15} /> Back to portfolio</Link><span className="brand-mark"><span className="brand-mark__dot" /> YC / 26</span></header>
