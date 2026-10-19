@@ -3,10 +3,11 @@
 import Image from "next/image";
 import Link from "next/link";
 import { AnimatePresence, motion, useReducedMotion, useScroll, useSpring, useTransform } from "framer-motion";
-import { ArrowDownRight, ArrowUpRight, Download, Github, Mail, Menu, Moon, Sparkles, Sun, X } from "lucide-react";
+import { ArrowDownRight, ArrowUpRight, Download, Github, Mail, Menu, Moon, Sun, X } from "lucide-react";
 import { useEffect, useState } from "react";
 import { experience, projects, site, skillGroups } from "@/lib/data";
 import { cn } from "@/lib/utils";
+import { WebglSculpture } from "@/components/hero/webgl-sculpture";
 
 const nav = [["Work", "projects"], ["About", "about"], ["Experience", "experience"]] as const;
 
@@ -72,7 +73,7 @@ function Hero({ reduceMotion }: { reduceMotion: boolean | null }) {
 }
 
 function HeroVisual({ reduceMotion }: { reduceMotion: boolean | null }) {
-  return <div className={cn("hero-visual", reduceMotion && "hero-visual--static")} aria-label="Abstract visualization of an AI system" role="img"><div className="hero-visual__glow" /><div className="hero-visual__orb" /><div className="hero-visual__orbit hero-visual__orbit--one" /><div className="hero-visual__orbit hero-visual__orbit--two" /><div className="hero-visual__core"><Sparkles size={19} /><span>signal / 01</span></div><svg className="hero-visual__lines" viewBox="0 0 600 600" fill="none" aria-hidden="true"><path d="M75 150C190 64 324 88 437 177C505 230 511 354 426 435C339 518 188 532 88 431" /><path d="M108 440C175 306 272 228 448 136" /><circle cx="75" cy="150" r="4" /><circle cx="437" cy="177" r="4" /><circle cx="88" cy="431" r="4" /></svg><div className="hero-visual__label hero-visual__label--a">01 / observe</div><div className="hero-visual__label hero-visual__label--b">02 / evaluate</div><div className="hero-visual__label hero-visual__label--c">03 / learn</div></div>;
+  return <WebglSculpture reducedMotion={reduceMotion} />;
 }
 
 function SectionIntro({ kicker, title, copy }: { kicker: string; title: string; copy?: string }) {
@@ -80,7 +81,7 @@ function SectionIntro({ kicker, title, copy }: { kicker: string; title: string; 
 }
 
 function Work() {
-  return <section id="projects" className="section page-width" aria-labelledby="work-title"><SectionIntro kicker="01 / Selected work" title="Systems that make complex things feel legible." copy="A small set of projects spanning generative search, LLM evaluation, and large-scale language data." /><div className="project-list">{projects.map((project, index) => <ProjectRow key={project.title} project={project} index={index} />)}</div></section>;
+  return <section id="projects" className="section page-width" aria-labelledby="work-title"><SectionIntro kicker="01 / Selected work" title="Systems that make complex things feel legible." copy="Four projects spanning generative search, research automation, resume infrastructure, and developer tools." /><div className="project-list">{projects.map((project, index) => <ProjectRow key={project.title} project={project} index={index} />)}</div></section>;
 }
 
 function ProjectRow({ project, index }: { project: (typeof projects)[number]; index: number }) {
