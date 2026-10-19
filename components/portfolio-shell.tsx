@@ -7,6 +7,7 @@ import { ArrowDownRight, ArrowUpRight, Download, Github, Mail, Menu, Moon, Sun, 
 import { useEffect, useRef, useState } from "react";
 import { experience, projects, site, skillGroups } from "@/lib/data";
 import { cn } from "@/lib/utils";
+import { CatAssistant } from "@/components/cat-assistant/cat-assistant";
 
 const nav = [["Work", "projects"], ["About", "about"], ["Experience", "experience"]] as const;
 const geo = projects.find((project) => project.slug === "geo-engine")!;
@@ -53,6 +54,7 @@ export function PortfolioShell() {
       <AnimatePresence>{menuOpen && <motion.nav initial={{ height: 0, opacity: 0 }} animate={{ height: "auto", opacity: 1 }} exit={{ height: 0, opacity: 0 }} className="mobile-menu md:hidden">{nav.map(([label, id]) => <Link key={id} href={`#${id}`} onClick={() => setMenuOpen(false)}>{label}<ArrowUpRight size={15} /></Link>)}<Link href={site.resume} onClick={() => setMenuOpen(false)}>Resume<Download size={15} /></Link></motion.nav>}</AnimatePresence>
     </header>
     <main id="top"><Hero reduceMotion={reduceMotion} /><Work reduceMotion={reduceMotion} /><About /><Experience /><Contact /></main>
+    <CatAssistant />
     <footer className="page-width footer"><span>© {new Date().getFullYear()} Yuxuan Chen</span><span>Software engineer · applied AI · systems with intent</span><Link href="#top" className="footer-top">Back to top <ArrowUpRight size={14} /></Link></footer>
   </div>;
 }
