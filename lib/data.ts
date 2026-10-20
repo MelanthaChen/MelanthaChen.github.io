@@ -2,10 +2,10 @@ import { Bot, BrainCircuit, BriefcaseBusiness, Cloud, Code2, Database, FlaskConi
 
 export const site = {
   name: "Yuxuan Chen",
-  title: "Full-Stack & Applied AI Engineer",
-  description: "Yuxuan Chen builds dependable full-stack systems, applied AI infrastructure, and interfaces with intent.",
-  education: "MS in Software Engineering Systems, Northeastern University",
-  location: "Malden, MA",
+  title: "Software Engineer · Backend, Full-Stack & Applied AI",
+  description: "Yuxuan Chen builds reliable backend systems, full-stack products, data workflows, and applied AI infrastructure.",
+  education: "M.S. Software Engineering Systems, Northeastern University",
+  location: "Boston area",
   email: "yuxuan.chen.1031@gmail.com",
   github: "https://github.com/MelanthaChen",
   linkedin: "https://www.linkedin.com/in/yuxuan-chen-739160245/",
@@ -15,146 +15,84 @@ export const site = {
 export const navItems = [["About", "about"], ["Projects", "projects"], ["Experience", "experience"], ["Contact", "contact"]] as const;
 
 export const aboutCards = [
-  { icon: GraduationCap, label: "Education", value: "Northeastern University", detail: "MS in Software Engineering Systems, expected Dec 2026" },
-  { icon: BrainCircuit, label: "Current role", value: "Research Assistant", detail: "LLM recommendation evaluation and applied AI systems" },
+  { icon: GraduationCap, label: "Education", value: "Northeastern University", detail: "M.S. Software Engineering Systems, expected Dec 2026" },
+  { icon: BrainCircuit, label: "Current role", value: "Research Assistant", detail: "LLM recommendation evaluation and applied AI infrastructure" },
   { icon: FlaskConical, label: "Research", value: "LLM behavior", detail: "Recommendation shifts, citation behavior, and GEO workflows" },
-  { icon: MapPin, label: "Location", value: "Malden, MA", detail: "Graduate student and software engineer in the Boston area" },
-  { icon: Sparkles, label: "Interests", value: "Applied AI systems", detail: "Evaluation, NLP pipelines, automation, and data workflows" },
-  { icon: Rocket, label: "Career goal", value: "Reliable AI infrastructure", detail: "Measurable, reproducible platforms for model evaluation" }
+  { icon: MapPin, label: "Location", value: "Boston area", detail: "Graduate student and software engineer" },
+  { icon: Sparkles, label: "Interests", value: "Practical AI systems", detail: "Evaluation, NLP pipelines, automation, and data workflows" },
+  { icon: Rocket, label: "Focus", value: "Reliable infrastructure", detail: "Observable, testable systems for model-assisted products" }
 ];
 
 export type Project = {
-  slug: string;
-  title: string;
-  category: "AI Platform" | "Research Automation" | "Developer Tool";
-  image: string;
-  description: string;
-  stack: string[];
-  links: { github: string; demo?: string };
-  overview: string;
-  problem: string;
-  solution: string;
-  architecture: { label: string; detail: string }[];
-  challenges: string[];
-  testing: string;
-  decisions: string;
-  outcomes: string;
-  learned: string;
-  timeline: string;
-  screenshots: string[];
+  slug: string; title: string; category: "AI Platform" | "Research Automation" | "Full-Stack Platform" | "Developer Tool" | "Collaborative Application"; image: string; description: string; stack: string[]; links: { github: string; demo?: string }; overview: string; problem: string; solution: string; architecture: { label: string; detail: string }[]; challenges: string[]; testing: string; decisions: string; outcomes: string; learned: string; timeline: string; role?: string; status?: string; screenshots: string[];
 };
 
 export const projects: Project[] = [
   {
-    slug: "geo-engine",
-    title: "GEO Engine",
-    category: "AI Platform",
-    image: "/images/project-geo-engine.svg",
-    description: "A property-centric research platform for website audits, platform retrieval, content workflows, publishing review, and LLM citation testing.",
-    stack: ["FastAPI", "React / TypeScript", "PostgreSQL", "Playwright", "OpenAI API"],
-    links: { github: "https://github.com/MelanthaChen/geo-engine", demo: "https://geo-engine-phi.vercel.app" },
-    overview: "GEO Engine turns a broad research question — what influences what generative engines retrieve, mention, or cite? — into an observable sequence of experiments.",
-    problem: "Generative Engine Optimization research crosses website evidence, platform conversations, content preparation, browser work, and model evaluation. Those pieces need shared property context and a traceable history.",
-    solution: "The system coordinates a React dashboard, FastAPI services, PostgreSQL persistence, OpenAI-backed generation, local Playwright retrievers, a publishing queue, human review, and citation tests.",
-    architecture: [
-      { label: "Frontend", detail: "Vercel-hosted React dashboard with property context, audit views, experiment controls, and history." },
-      { label: "Cloud services", detail: "FastAPI routes, SQLAlchemy models, PostgreSQL state, audit services, queues, and evaluation logic." },
-      { label: "Local agents", detail: "Retriever and publisher workers use Playwright for browser work that is not reliable inside a cloud service." }
-    ],
-    challenges: ["Keeping experiments reproducible across model runs", "Separating cloud state from browser-dependent work", "Making publishing a human-reviewed workflow instead of blind automation"],
-    testing: "The repository includes backend tests, frontend checks, documented health checks, and explicit dry-run / human-review paths for browser workflows.",
-    decisions: "Keep browser sessions local, make the property the organizing boundary, and persist history events so research results can be inspected rather than inferred.",
-    outcomes: "A working research platform with website audit, AI FAQ discovery, platform retrieval, content generation, publishing queue, human review, citation tests, and history tracking.",
-    learned: "Strong AI research systems need reliable orchestration, persistence, and review semantics as much as they need model access.",
-    timeline: "Research Assistant, Northeastern University · May 2026 — Present",
-    screenshots: ["/images/project-geo-engine.svg"]
+    slug: "geo-engine", title: "GEO Engine", category: "AI Platform", image: "/images/project-geo-engine.svg",
+    description: "A full-stack research platform for website audits, retrieval, content workflows, publishing review, and LLM citation experiments.",
+    stack: ["FastAPI", "React / TypeScript", "PostgreSQL", "SQLAlchemy", "Playwright"], links: { github: "https://github.com/MelanthaChen/geo-engine", demo: "https://geo-engine-phi.vercel.app" },
+    overview: "GEO Engine turns a research question—what influences what generative engines retrieve, mention, or cite?—into a traceable sequence of experiments.",
+    problem: "GEO research crosses website evidence, platform retrieval, content preparation, browser work, and model evaluation. The system needs a shared property boundary and durable history instead of disconnected scripts.",
+    solution: "I built a React/TypeScript dashboard over FastAPI services, SQLAlchemy models, PostgreSQL persistence, OpenAI-backed generation, local Playwright retrievers, a publishing queue, human review, citation tests, and audit history.",
+    architecture: [{ label: "Frontend", detail: "A Vercel-hosted React dashboard organizes property context, website audits, experiment controls, citation results, and history." }, { label: "Cloud services", detail: "FastAPI routes and SQLAlchemy services own PostgreSQL state, audit records, queues, generation, and evaluation logic." }, { label: "Local agents", detail: "Publisher and retriever workers run Playwright locally, keeping browser sessions outside the cloud service while the API stores job state and results." }],
+    challenges: ["Keeping experiment inputs and outputs reproducible across model runs", "Separating cloud state from browser-dependent work", "Making publishing a human-reviewed workflow", "Preserving evidence for citation and retrieval results"],
+    testing: "The repository contains backend tests for experiment research, website audit identity and evidence, migrations, crawler strategies, and providers, plus frontend tests for experiment and audit utilities. It also documents health checks, dry runs, and human-review paths.",
+    decisions: "Use the property as the organizing boundary, persist history events, and keep browser-bound workers local. Playwright needs a real browser profile and interactive session; the cloud API owns durable state and orchestration instead of pretending those sessions are serverless.",
+    outcomes: "A working research platform with audit, retrieval, FAQ discovery, content generation, publishing queues, human review, citation tests, and experiment history. No unmeasured business impact is claimed.",
+    learned: "Applied AI infrastructure needs orchestration, persistence, and review semantics as much as it needs model access.", timeline: "Research Assistant, Northeastern University · May 2026 — Present", role: "Backend and full-stack engineering", status: "Active research platform", screenshots: ["/images/project-geo-engine.svg"]
   },
   {
-    slug: "geo-research-outreach-agent",
-    title: "GEO Research Outreach Agent",
-    category: "Research Automation",
-    image: "/images/project-outreach-agent.svg",
-    description: "A bounded Python application for discovering, qualifying, enriching, and reviewing potential GEO research partners without pretending that review is outreach.",
-    stack: ["Python", "SQLite", "State machines", "Website evidence", "CLI workflows"],
-    links: { github: "https://github.com/MelanthaChen/geo-research-outreach-agent" },
-    overview: "The agent is deliberately separate from the GEO platform. It turns public discovery sources and website evidence into explainable, reviewable research candidates.",
-    problem: "Research-partner discovery is noisy: duplicate domains, missing evidence, uncertain qualification, and contact channels with different levels of confidence all need to remain distinguishable.",
-    solution: "The pipeline validates and normalizes candidates, caches bounded website evidence, applies configured qualification rules, ranks opportunity and priority independently, stores provenance in SQLite, and preserves human review decisions.",
-    architecture: [
-      { label: "Discover", detail: "CSV / JSON, public YC directories, and chamber listings become candidate records with provenance." },
-      { label: "Qualify", detail: "Normalized domains, cached pages, structured evidence, explainable rules, and explicit lifecycle transitions." },
-      { label: "Review", detail: "Contact channels are ranked and exported for human review; the current Phase 5A transport never sends messages." }
-    ],
-    challenges: ["Making repeated imports idempotent", "Keeping eligibility, opportunity, priority, and confidence separate", "Recording missing or blocked evidence as uncertainty instead of a false negative"],
-    testing: "The repository includes tests around normalization, state transitions, persistence, idempotency, review behavior, and bounded collection policies.",
-    decisions: "Use SQLite as the internal source of truth, make lifecycle transitions explicit, and separate a qualified company from an approved contact or a sent message.",
-    outcomes: "A reproducible local workflow for research-partner discovery, evidence collection, explainable qualification, contact enrichment, and human review. No real delivery is claimed.",
-    learned: "Reliable automation is often about preserving uncertainty and provenance, not hiding them behind a confident score.",
-    timeline: "Independent engineering project · 2026",
-    screenshots: ["/images/project-outreach-agent.svg"]
+    slug: "geo-research-outreach-agent", title: "GEO Research Outreach Agent", category: "Research Automation", image: "/images/project-outreach-agent.svg",
+    description: "A bounded Python pipeline that turns noisy public discovery data into normalized, evidence-backed candidates for human review.", stack: ["Python", "SQLite", "State transitions", "Website evidence", "CLI workflows"], links: { github: "https://github.com/MelanthaChen/geo-research-outreach-agent" },
+    overview: "The agent is deliberately separate from GEO Engine. It preserves provenance while moving candidates through discovery, website verification, qualification, contact evidence, and review.",
+    problem: "Candidate discovery produces duplicates, uncertain identity, incomplete evidence, and channels with different confidence. A qualified company is not the same thing as an approved contact or a sent message.",
+    solution: "I implemented domain normalization, idempotent imports, bounded website collection, explicit lifecycle transitions, SQLite persistence, evidence-based qualification, contact-channel ranking, resumable processing, and review state that survives requalification.",
+    architecture: [{ label: "Discover", detail: "CSV/JSON and public directory sources become candidate records with source identifiers and provenance." }, { label: "Verify", detail: "Bounded website checks respect robots and access controls, cache evidence, and distinguish verified identity from ambiguous or blocked results." }, { label: "Review", detail: "Eligibility, opportunity, priority, confidence, contact evidence, and review state remain separate; the workflow does not send messages or submit forms." }],
+    challenges: ["Making repeated imports resumable and idempotent", "Keeping eligibility, opportunity, priority, and confidence independent", "Representing missing or blocked evidence as uncertainty", "Scaling verification without bypassing access controls or human approval"],
+    testing: "Tests cover normalization, persistence, qualification, state transitions, contact extraction, website identity, Phase 6 screening, bounded verification, Phase 6F/6G/6H pilots, Phase 7 behavior, and the local dashboard.",
+    decisions: "SQLite is the source of truth; lifecycle transitions use explicit rules; evidence is retained; and the offline DemoTransport has no real delivery path.",
+    outcomes: "The latest Phase 7 report describes a 57,664-domain candidate pool, 769 strict contactable companies, 578 with public business email evidence, and 279 with confirmed forms. Processing is incomplete: 53,232 candidates remain unattempted, channels remain pending, and no email or form was sent or submitted.",
+    learned: "Reliable automation is often about preserving uncertainty and provenance, not hiding them behind a confident score.", timeline: "Independent engineering project · 2026", role: "Pipeline architecture and implementation", status: "Active; verification remains resumable", screenshots: ["/images/project-outreach-agent.svg"]
   },
   {
-    slug: "tailorstack",
-    title: "TailorStack",
-    category: "AI Platform",
-    image: "/images/project-tailorstack.svg",
-    description: "A resume operating system where structured resume data is the source of truth and generated artifacts remain reviewable, versioned, and reproducible.",
-    stack: ["Node.js", "PostgreSQL", "Async queues", "TypeScript", "AI boundaries"],
-    links: { github: "https://github.com/MelanthaChen/TailorStack" },
-    overview: "TailorStack treats a resume as structured product data rather than a single document, connecting job intelligence, deterministic matching, reviewable optimization, and immutable artifacts.",
-    problem: "Resume tailoring becomes fragile when AI edits the canonical document directly. Matching needs evidence, suggested changes need review, and every generated version needs a clear lineage.",
-    solution: "A Node monorepo separates API services, web shell, typed config, PostgreSQL access, a repository-backed queue, object storage, AI provider boundaries, migrations, and end-to-end tests.",
-    architecture: [
-      { label: "Canonical data", detail: "Structured resume sections and entities are the source of truth; PDFs, HTML, and JSON are generated artifacts." },
-      { label: "Matching", detail: "Normalized job model → deterministic matcher → evidence generator → gap analyzer → match report." },
-      { label: "Versioning", detail: "Accepted patch sets create immutable versions, snapshots, diffs, and rendered artifacts without silent edits." }
-    ],
-    challenges: ["Keeping AI suggestions inside explicit service boundaries", "Making every match and gap evidence-backed", "Preserving immutable resume and application history"],
-    testing: "The repository documents unit, integration, and end-to-end coverage spanning intake, parsing, matching, optimization, rendering, and application workspace flows.",
-    decisions: "Let deterministic services own matching, readiness, validation, and artifact application; use AI to parse, normalize, explain, and propose wording.",
-    outcomes: "A production-oriented monorepo architecture for resume intake, structured editing, job intelligence, reviewable optimization, rendering, and application tracking.",
-    learned: "AI features become more trustworthy when the system makes the boundary between suggestion and committed state impossible to miss.",
-    timeline: "Independent engineering project · 2026",
-    screenshots: ["/images/project-tailorstack.svg"]
+    slug: "account-lifecycle", title: "Account Lifecycle Platform", category: "Full-Stack Platform", image: "/images/project-llm.svg",
+    description: "A React, FastAPI, and PostgreSQL control center for account sessions, workflow execution, health, campaigns, and a separate local browser agent.", stack: ["FastAPI", "React / Vite", "PostgreSQL", "Async SQLAlchemy", "Playwright"], links: { github: "https://github.com/MelanthaChen/Account_lifecycle" },
+    overview: "Account Lifecycle is a Reddit-focused platform for managing browser sessions, reusable workflows, campaign schedules, activity history, health scoring, and researcher-run automation agents.",
+    problem: "Browser automation, durable workflow state, scheduling, and account health have different runtime needs. Putting Playwright inside the API would make session ownership, recovery, and deployment boundaries harder to reason about.",
+    solution: "The platform separates a React/Vite frontend, FastAPI routers/services/repositories, PostgreSQL persistence, an APScheduler-backed campaign layer, and a local Automation Agent that polls queued jobs and owns Playwright profiles.",
+    architecture: [{ label: "Web and API", detail: "React pages and hooks call FastAPI routers, which delegate to service and repository layers backed by async SQLAlchemy." }, { label: "Execution boundary", detail: "The backend creates typed automation jobs; the local agent owns browser sessions, provider actions, persistent profiles, and workflow execution." }, { label: "Reliability state", detail: "Alembic migrations, queued/running/success/failed job states, activity history, scheduler records, and workflow transitions make execution inspectable." }],
+    challenges: ["Keeping the backend browser-free while preserving session lifecycle behavior", "Modeling queued work and recovery states explicitly", "Coordinating campaign schedules with reusable workflow logic", "Migrating a growing PostgreSQL schema safely"],
+    testing: "The repository is organized for backend and frontend checks, migration validation, API health checks, and UI test-activity flows. The documented development path runs PostgreSQL, Alembic, FastAPI, the local agent, and Vite as separate processes.",
+    decisions: "Treat the local Automation Agent as the execution boundary, keep scheduler logic separate from browser automation, and make database migrations a startup requirement. The project documents that the scheduler is in-process and does not claim a distributed queue or retry engine.",
+    outcomes: "A working platform with account/session management, queued jobs, campaign and workflow engines, scheduler integration, activity tracking, health scoring, recommendations, and a local Playwright runtime. External usage or business outcomes are not claimed.",
+    learned: "Automation becomes more reliable when browser ownership, job state, and business workflows are separate responsibilities.", timeline: "Independent engineering project · 2026", role: "Backend architecture and full-stack implementation", status: "Working platform; active iteration", screenshots: ["/images/project-llm.svg"]
   },
   {
-    slug: "algocoach",
-    title: "AlgoCoach",
-    category: "Developer Tool",
-    image: "/images/project-algocoach.svg",
-    description: "A Manifest V3 Chrome extension that adds a focused DSA coaching layer to supported LeetCode problem pages.",
-    stack: ["React", "TypeScript", "Manifest V3", "Shadow DOM", "Vite"],
-    links: { github: "https://github.com/MelanthaChen/algo-coach" },
-    overview: "AlgoCoach enhances the existing LeetCode problem page without replacing it: a collapsible panel provides local topic context, visualizations, learning notes, and progress.",
-    problem: "A learning tool must integrate into a living browser page without leaking styles, breaking navigation, or requiring a backend for basic learning state.",
-    solution: "The content script detects supported problem routes, mounts a React panel inside a Shadow DOM host, injects isolated styles, and remounts as LeetCode changes its SPA history.",
-    architecture: [
-      { label: "Extension", detail: "Manifest V3 background and content scripts activate only on supported LeetCode problem URLs." },
-      { label: "Isolation", detail: "The panel renders into Shadow DOM so Tailwind styles stay separate from the host page." },
-      { label: "Learning", detail: "Local metadata and deterministic visualization steps power trees, BFS, DFS, binary search, notes, and progress." }
-    ],
-    challenges: ["Keeping the panel stable across SPA navigation", "Isolating styles from a complex host page", "Building useful visual feedback without a backend or AI dependency"],
-    testing: "The project includes a Vite production build, ESLint, TypeScript, and route-scoped runtime behavior for supported problem pages.",
-    decisions: "Keep the MVP local-first, use curated metadata rather than a remote API, and treat Shadow DOM isolation as a core architecture decision.",
-    outcomes: "A focused browser-extension MVP with guided problem context, deterministic visualizations, local notes, and local progress tracking.",
-    learned: "The best browser integrations respect the host product: add a useful layer, isolate it carefully, and disappear when the context is wrong.",
-    timeline: "Independent engineering project · 2026",
-    screenshots: ["/images/project-algocoach.svg"]
+    slug: "tailorstack", title: "TailorStack", category: "AI Platform", image: "/images/project-tailorstack.svg",
+    description: "A Node.js monorepo that treats structured resume data as the source of truth and keeps matching, AI suggestions, versions, and artifacts reviewable.", stack: ["Node.js", "PostgreSQL", "Async jobs", "JavaScript", "AI boundaries"], links: { github: "https://github.com/MelanthaChen/TailorStack" },
+    overview: "TailorStack models resume tailoring as a data and workflow problem rather than a direct document rewrite.", problem: "A resume workflow becomes fragile when AI edits the canonical document directly. Job matching needs evidence, suggestions need review, and each generated artifact needs lineage.", solution: "The monorepo separates API controllers/services/repositories, a web shell, PostgreSQL access, migrations, a repository-backed async-job layer, object storage, AI provider boundaries, and unit/integration/end-to-end test areas.",
+    architecture: [{ label: "Canonical data", detail: "Structured resume sections are the source of truth; PDF, HTML, and JSON files are generated artifacts." }, { label: "Matching", detail: "Normalized job model → deterministic matcher → evidence generator → gap analyzer → match report." }, { label: "Versioning", detail: "Accepted patch sets create immutable versions, snapshots, diffs, and rendered artifacts without silent edits." }], challenges: ["Keeping AI suggestions inside explicit service boundaries", "Making every match and gap evidence-backed", "Preserving immutable resume and application history", "Coordinating queued parsing and rendering work"], testing: "The repository exposes `npm run check` and `npm test`; its documented test architecture covers intake, parsing, matching, optimization, rendering, and application-workspace flows.", decisions: "Deterministic services own matching, readiness, validation, and patch application. AI parses, normalizes, explains, and proposes wording; it does not silently modify canonical state.", outcomes: "A substantial monorepo implementation covering resume intake, structured editing, job intelligence, deterministic matching, reviewable optimization, rendering, versioning, and application tracking. The portfolio does not claim every planned deployment feature is live.", learned: "AI features become more trustworthy when suggestion and committed state are explicit.", timeline: "Independent engineering project · 2026", role: "Full-stack architecture and implementation", status: "Active implementation", screenshots: ["/images/project-tailorstack.svg"]
+  },
+  {
+    slug: "algocoach", title: "AlgoCoach", category: "Developer Tool", image: "/images/project-algocoach.svg",
+    description: "A Manifest V3 Chrome extension that adds deterministic DSA coaching to supported LeetCode pages without taking over the host application.", stack: ["React", "TypeScript", "Manifest V3", "Shadow DOM", "Vite"], links: { github: "https://github.com/MelanthaChen/algo-coach" },
+    overview: "AlgoCoach enhances the existing LeetCode problem page with local topic context, visualizations, notes, and progress.", problem: "A browser learning tool must survive SPA navigation, avoid leaking CSS into a complex host page, and remain useful without a backend or remote model dependency.", solution: "The content script detects supported problem routes, mounts a React panel inside a Shadow DOM host, injects isolated styles, and remounts as LeetCode changes its SPA history. Curated local metadata drives deterministic visualizations.", architecture: [{ label: "Extension", detail: "Manifest V3 background and content scripts activate only on supported LeetCode problem URLs." }, { label: "Isolation", detail: "The panel renders into Shadow DOM so its styles remain separate from the host page." }, { label: "Learning", detail: "Local metadata and deterministic steps support trees, BFS, DFS, binary search, notes, and progress." }], challenges: ["Keeping the panel stable across SPA navigation", "Isolating styles from a third-party host page", "Building useful visual feedback without a backend", "Keeping local storage behavior predictable"], testing: "The repository provides a Vite production build, TypeScript, ESLint, route-scoped runtime behavior, local metadata, and safe-storage utilities.", decisions: "Keep the MVP local-first, use curated metadata instead of a remote API, and treat Shadow DOM isolation as a core integration boundary.", outcomes: "A focused browser-extension MVP with guided problem context, deterministic visualizations, local notes, and local progress tracking.", learned: "Good browser integrations add a useful layer, isolate it carefully, and disappear when the context is wrong.", timeline: "Independent engineering project · 2026", role: "Extension architecture and implementation", status: "MVP", screenshots: ["/images/project-algocoach.svg"]
+  },
+  {
+    slug: "group-study-application", title: "Group Study Application", category: "Collaborative Application", image: "/images/project-algo.svg",
+    description: "A JavaFX study-room application built by a three-person team, with custom data structures and real-time room and user status flows.", stack: ["Java 17", "JavaFX", "Maven", "Custom ADTs", "OOP"], links: { github: "https://github.com/Sagar-Satra/Group-Study-Application" },
+    overview: "The application combines study-room creation and search, session timing, user status, notifications, leaderboards, and a Pokémon-based motivation loop.", problem: "A collaborative study session needs shared room state, time tracking, participant status, search, and collection mechanics without hiding the underlying data-structure work.", solution: "As one member of a three-person team, I implemented time tracking, the Hashing ADT and HashMap, room and user status management, room search, and room creation logic. Pokémon evolution, leaderboards, and other features remain attributed to teammates.", architecture: [{ label: "Study rooms", detail: "Room creation, search, capacity, privacy, duration, and active/ended status form the collaboration flow." }, { label: "Data structures", detail: "Custom HashMap and other ADTs support room storage, participant/status mappings, time tracking, notifications, and collections." }, { label: "Team contribution", detail: "My work focused on time and room/user state; the README attributes Pokémon evolution, trophies, and leaderboards to teammates." }], challenges: ["Keeping room and user status consistent as sessions start and end", "Implementing collision-resolving HashMap behavior", "Connecting search and creation logic to JavaFX", "Integrating individual work into a Maven team project"], testing: "The repository is configured as a Java 17 Maven project and documents `mvn clean install` plus JavaFX run workflows. This portfolio attributes only the documented individual contributions.", decisions: "Use custom ADTs where course requirements demanded them, keep room/user state explicit, and describe the project as a team application rather than assigning every feature to one contributor.", outcomes: "A collaborative JavaFX application with study rooms, session timing, statuses, notifications, and shared motivation features.", learned: "Clear ownership boundaries matter in team software: contribution is stronger when architecture and attribution are explicit.", timeline: "Team course project · Spring 2026", role: "Team member · time, hashing, room and status features", status: "Completed course project", screenshots: ["/images/project-algo.svg"]
   }
 ];
 
 export const experience = [
-  { company: "Northeastern University", role: "Research Assistant", dates: "May 2026 — Present", responsibilities: ["Designing a platform to evaluate how repeated exposure influences LLM recommendation behavior.", "Building backend services with Python, FastAPI, PostgreSQL, and OpenAI APIs to automate experiment execution and evaluation."], tech: ["Python", "FastAPI", "PostgreSQL", "OpenAI APIs", "Playwright"] },
-  { company: "Software Velocity Corporation", role: "Software Engineer Intern", dates: "Aug 2025 — Dec 2025", responsibilities: ["Designed a unified LLM evaluation pipeline for 10+ models across L4, T4, A100, and API-based environments.", "Built benchmarking workflows for latency, throughput, and cost analysis across deployment configurations."], tech: ["Python", "vLLM", "Cloud GPUs", "AWS", "GCP"] },
-  { company: "Dickinson College", role: "Research Assistant", dates: "Sep 2023 — Jul 2024", responsibilities: ["Built NLP pipelines for 300K+ documents and 100M+ data points using Python.", "Designed structured corpus generation workflows for downstream NLP analysis and modeling."], tech: ["Python", "NLP", "Data Pipelines", "Visualization", "SQL"] },
-  { company: "China Construction Bank", role: "Data Analytics Intern", dates: "May 2023 — Jul 2023", responsibilities: ["Automated daily transaction CSV cleaning with Python, reducing recurring analysis prep time by 75%.", "Analyzed 50,000+ transactions in SQL and built customer segmentation models and summary tables."], tech: ["Python", "SQL", "Data Cleaning", "Segmentation"] }
+  { company: "Northeastern University", role: "Research Assistant", dates: "May 2026 — Present", responsibilities: ["Designing and developing a platform to evaluate how repeated exposure influences recommendation behavior across large language models.", "Building Python/FastAPI/PostgreSQL services for experiment execution, data collection, ranking analysis, citation evaluation, and LLM-assisted content workflows."], tech: ["Python", "FastAPI", "PostgreSQL", "OpenAI APIs", "Playwright"] },
+  { company: "Software Velocity Corporation", role: "Software Engineer Intern", dates: "Sep 2025 — Jan 2026", responsibilities: ["Designed a unified LLM evaluation pipeline for 10+ models across L4, T4, A100, and API-based environments, with structured run tags for reproducibility.", "Built cloud benchmarking workflows for latency, throughput, cost, and concurrent inference; the resume reports a 25–40% improvement in end-to-end pipeline efficiency."], tech: ["Python", "vLLM", "Cloud GPUs", "AWS", "GCP"] },
+  { company: "Dickinson College", role: "Research Assistant", dates: "Sep 2023 — Jul 2024", responsibilities: ["Built Python NLP pipelines for 300K+ documents and 100M+ data points.", "Designed structured corpus-generation, querying, visualization, and downstream analysis workflows."], tech: ["Python", "NLP", "Data Pipelines", "Visualization", "SQL"] },
+  { company: "China Construction Bank", role: "Data Analytics Intern", dates: "May 2023 — Jul 2023", responsibilities: ["Automated recurring transaction CSV cleaning with Python, including rename, deduplication, date parsing, and validation; the resume reports reducing preparation from 2 hours to 30 minutes.", "Analyzed 50,000+ transactions in SQL and built customer segmentation models and stakeholder-ready summary tables."], tech: ["Python", "SQL", "Data Cleaning", "Segmentation"] }
 ];
 
 export const skillGroups = [
-  { label: "Languages", icon: Code2, skills: ["Python", "TypeScript", "Java", "SQL"] },
-  { label: "AI / ML", icon: Bot, skills: ["LLM Systems", "NLP", "Prompt Engineering", "LLM Evaluation"] },
-  { label: "Backend", icon: BriefcaseBusiness, skills: ["FastAPI", "Node.js", "Experiment Tracking", "Automation"] },
-  { label: "Cloud", icon: Cloud, skills: ["AWS", "GCP", "Cloud GPUs", "vLLM", "Linux"] },
-  { label: "Data", icon: Database, skills: ["PostgreSQL", "SQLite", "Data Pipelines", "Corpus Generation"] },
-  { label: "Developer Tools", icon: TerminalSquare, skills: ["Playwright", "Git", "Chrome Extensions", "Visualization"] }
+  { label: "Languages", icon: Code2, skills: ["Python", "TypeScript", "Java", "SQL"] }, { label: "AI / ML", icon: Bot, skills: ["LLM Systems", "RAG", "NLP", "LLM Evaluation"] }, { label: "Backend", icon: BriefcaseBusiness, skills: ["FastAPI", "Node.js", "SQLAlchemy", "Automation"] }, { label: "Cloud", icon: Cloud, skills: ["AWS", "GCP", "Cloud GPUs", "vLLM", "Linux"] }, { label: "Data", icon: Database, skills: ["PostgreSQL", "SQLite", "Data Pipelines", "Corpus Generation"] }, { label: "Developer Tools", icon: TerminalSquare, skills: ["Playwright", "Git", "Chrome Extensions", "Maven"] }
 ];
