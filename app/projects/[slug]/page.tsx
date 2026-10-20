@@ -4,6 +4,7 @@ import Link from "next/link";
 import { ArrowLeft, ArrowUpRight, Github } from "lucide-react";
 import { notFound } from "next/navigation";
 import { projects, site } from "@/lib/data";
+import { ProjectMediaGallery } from "@/components/project-media-gallery";
 
 export const dynamicParams = false;
 export function generateStaticParams() { return projects.map((project) => ({ slug: project.slug })); }
@@ -16,7 +17,8 @@ export default async function ProjectCaseStudy({ params }: { params: Promise<{ s
   return <main className="case-study">
     <header className="case-nav page-width"><Link href="/" className="case-back"><ArrowLeft size={15} /> Back to portfolio</Link><span className="brand-mark"><span className="brand-mark__dot" /> YC / 26</span></header>
     <div className="page-width case-hero"><p className="eyebrow">{project.category} · {project.timeline}</p><h1>{project.title}</h1><p className="case-summary">{project.description}</p><div className="case-facts"><span><b>Role</b>{project.role ?? "Engineering"}</span><span><b>Status</b>{project.status ?? "Documented implementation"}</span></div><div className="case-links"><a href={project.links.github} target="_blank" rel="noreferrer">View source <Github size={15} /></a>{project.links.demo && <a href={project.links.demo} target="_blank" rel="noreferrer">Live demo <ArrowUpRight size={15} /></a>}</div></div>
-    <div className="page-width case-image"><Image src={project.image} alt={`${project.title} technical visualization`} fill priority sizes="(max-width: 900px) 100vw, 1200px" /></div>
+    <div className="page-width case-image"><Image src={project.image} alt={`${project.title} product visual`} fill priority sizes="(max-width: 900px) 100vw, 1200px" /></div>
+    <div className="page-width case-media"><div className="case-media__heading"><p className="eyebrow">Visual evidence</p><p>Product views and implementation diagrams, labeled by source.</p></div><ProjectMediaGallery title={project.title} media={project.screenshots} /></div>
     <div className="page-width case-content"><aside><p className="eyebrow">On this page</p><a href="#overview">Overview</a><a href="#architecture">Architecture</a><a href="#engineering">Engineering</a><a href="#reliability">Reliability</a></aside><article>
       <CaseSection id="overview" title="01 / Overview"><p>{project.overview}</p><div className="case-callout"><span>Scope</span><strong>{project.problem}</strong></div></CaseSection>
       <CaseSection id="architecture" title="02 / Technical architecture"><p>{project.solution}</p><div className="architecture-grid">{project.architecture.map((item, index) => <div key={item.label} className="architecture-node"><span>0{index + 1}</span><h3>{item.label}</h3><p>{item.detail}</p></div>)}</div></CaseSection>
