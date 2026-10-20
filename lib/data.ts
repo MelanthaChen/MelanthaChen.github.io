@@ -23,7 +23,7 @@ export const aboutCards = [
   { icon: Rocket, label: "Focus", value: "Reliable infrastructure", detail: "Observable, testable systems for model-assisted products" }
 ];
 
-export type ProjectMedia = { src: string; caption: string; kind: "screenshot" | "diagram" };
+export type ProjectMedia = { src: string; caption: string; kind: "screenshot" | "diagram"; width?: number; height?: number };
 export type Project = {
   slug: string; title: string; category: "AI Platform" | "Research Automation" | "Full-Stack Platform" | "Developer Tool" | "Collaborative Application"; image: string; description: string; stack: string[]; links: { github: string; demo?: string }; overview: string; problem: string; solution: string; architecture: { label: string; detail: string }[]; challenges: string[]; testing: string; decisions: string; outcomes: string; learned: string; timeline: string; role?: string; status?: string; screenshots: ProjectMedia[];
 };
@@ -89,7 +89,7 @@ export const projects: Project[] = [
 
 export const experience = [
   { company: "Northeastern University", role: "Research Assistant", dates: "May 2026 — Present", responsibilities: ["Designing and developing a platform to evaluate how repeated exposure influences recommendation behavior across large language models.", "Building Python/FastAPI/PostgreSQL services for experiment execution, data collection, ranking analysis, citation evaluation, and LLM-assisted content workflows."], tech: ["Python", "FastAPI", "PostgreSQL", "OpenAI APIs", "Playwright"] },
-  { company: "Software Velocity Corporation", role: "Software Engineer Intern", dates: "Sep 2025 — Jan 2026", responsibilities: ["Designed a unified LLM evaluation pipeline for 10+ models across L4, T4, A100, and API-based environments, with structured run tags for reproducibility.", "Built cloud benchmarking workflows for latency, throughput, cost, and concurrent inference; the resume reports a 25–40% improvement in end-to-end pipeline efficiency."], tech: ["Python", "vLLM", "Cloud GPUs", "AWS", "GCP"] },
+  { company: "Software Velocity Corporation", role: "Software Engineer Intern · Co-op", dates: "Aug 25 — Dec 19, 2025", responsibilities: ["Designed a unified LLM evaluation pipeline for 10+ models across L4, T4, A100, and API-based environments, with structured run tags for reproducibility.", "Built cloud benchmarking workflows for latency, throughput, cost, and concurrent inference; the resume reports a 25–40% improvement in end-to-end pipeline efficiency."], tech: ["Python", "vLLM", "Cloud GPUs", "AWS", "GCP"] },
   { company: "Dickinson College", role: "Research Assistant", dates: "Sep 2023 — Jul 2024", responsibilities: ["Built Python NLP pipelines for 300K+ documents and 100M+ data points.", "Designed structured corpus-generation, querying, visualization, and downstream analysis workflows."], tech: ["Python", "NLP", "Data Pipelines", "Visualization", "SQL"] },
   { company: "China Construction Bank", role: "Data Analytics Intern", dates: "May 2023 — Jul 2023", responsibilities: ["Automated recurring transaction CSV cleaning with Python, including rename, deduplication, date parsing, and validation; the resume reports reducing preparation from 2 hours to 30 minutes.", "Analyzed 50,000+ transactions in SQL and built customer segmentation models and stakeholder-ready summary tables."], tech: ["Python", "SQL", "Data Cleaning", "Segmentation"] }
 ];
