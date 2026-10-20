@@ -75,10 +75,22 @@ function Hero({ reduceMotion }: { reduceMotion: boolean | null }) {
 
 function HeroVisual({ reducedMotion }: { reducedMotion: boolean | null }) {
   const visualRef = useRef<HTMLDivElement>(null);
+  const [animationPaused, setAnimationPaused] = useState(false);
 
   useEffect(() => {
     const visual = visualRef.current;
-    if (!visual || reducedMotion) return;
+    if (!visual) return;
+    const updateVisibility = () => setAnimationPaused(document.visibilityState !== "visible");
+    const observer = new IntersectionObserver(([entry]) => setAnimationPaused(!entry.isIntersecting), { threshold: 0.05 });
+    observer.observe(visual);
+    document.addEventListener("visibilitychange", updateVisibility);
+    updateVisibility();
+    if (reducedMotion) {
+      return () => {
+        observer.disconnect();
+        document.removeEventListener("visibilitychange", updateVisibility);
+      };
+    }
     const reset = () => {
       visual.style.setProperty("--parallax-x", "0px");
       visual.style.setProperty("--parallax-y", "0px");
@@ -93,16 +105,35 @@ function HeroVisual({ reducedMotion }: { reducedMotion: boolean | null }) {
     visual.addEventListener("pointermove", move, { passive: true });
     visual.addEventListener("pointerleave", reset);
     return () => {
+      observer.disconnect();
+      document.removeEventListener("visibilitychange", updateVisibility);
       visual.removeEventListener("pointermove", move);
       visual.removeEventListener("pointerleave", reset);
     };
   }, [reducedMotion]);
 
-  return <div ref={visualRef} className="hero-mark" aria-hidden="true">
+  return <div ref={visualRef} className={cn("hero-mark", animationPaused && "hero-mark--paused")} aria-hidden="true">
+    <svg className="hero-mark__filters" aria-hidden="true" focusable="false" viewBox="0 0 100 100">
+      <defs>
+        <filter id="hero-glass-displacement" x="-20%" y="-20%" width="140%" height="140%">
+          <feTurbulence type="fractalNoise" baseFrequency="0.025" numOctaves="2" seed="11" result="noise" />
+          <feDisplacementMap in="SourceGraphic" in2="noise" scale="2.5" xChannelSelector="R" yChannelSelector="G" />
+        </filter>
+      </defs>
+    </svg>
     <div className="hero-mark__halo" />
     <div className="hero-mark__ring hero-mark__ring--outer" />
     <div className="hero-mark__ring hero-mark__ring--inner" />
-    <div className="hero-mark__orb"><div className="hero-mark__orb-shape" /></div>
+    <div className="hero-mark__orb">
+      <div className="hero-mark__orb-shape">
+        <div className="hero-mark__orb-interior" />
+        <div className="hero-mark__orb-aurora hero-mark__orb-aurora--violet" />
+        <div className="hero-mark__orb-aurora hero-mark__orb-aurora--cyan" />
+        <div className="hero-mark__orb-sheen" />
+        <div className="hero-mark__orb-rim" />
+        <div className="hero-mark__orb-specular" />
+      </div>
+    </div>
     <div className="hero-mark__axis hero-mark__axis--horizontal" />
     <div className="hero-mark__axis hero-mark__axis--vertical" />
     <span className="hero-mark__label hero-mark__label--top">01 / SYSTEMS STUDY</span>
